@@ -1,0 +1,8 @@
+<div id="notification">
+  <div class="close">Close</div>
+  <p>
+    <%= message.body %><br>
+    from <%= message.user.name %>
+  </p>
+  <p><%= link_to 'Open convo', conversation_path(message.conversation) %></p>
+</div>
