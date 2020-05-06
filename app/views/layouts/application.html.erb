@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatter</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% flash.each do |key, value| %>
+      <div>
+        <%= value %>
+      </div>
+    <% end %>
+    <% if user_signed_in? %>
+      <p>Signed in as <%= current_user.name %> | <%= link_to 'log out', destroy_user_session_path, method: :delete %></p>
+      <li><%= link_to 'Users', users_path %></li>
+    <% end %>
+    <p id="notice"><%= notice %></p>
+    <p id="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>
