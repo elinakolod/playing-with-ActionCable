@@ -1,0 +1,18 @@
+<h1>Chatting with <%= online_status(@conversation.with(current_user)) %></h1>
+
+<div id="conversation-main">
+  <div id="conversation-body">
+    <%= render @conversation.personal_messages %>
+  </div>
+
+  <div id="new_message"%></div>
+  <div id="status"%></div>
+
+  <%= form_with(model: @personal_message, remote: true) do |f| %>
+    <%= hidden_field_tag 'conversation_id', @conversation.id %>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+
+    <%= f.submit 'Send' %>
+  <% end %>
+</div>
