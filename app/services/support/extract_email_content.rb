@@ -5,19 +5,19 @@ module Support
     end
 
     def call
-      message
+      message_params
     end
 
     private
 
     attr_reader :mail
 
-    def message
-      @message ||= OpenStruct.new(title: mail.subject, text: fetch_content)
+    def message_params
+      @message_params ||= { subject: mail.subject, text: fetch_content }
     end
 
     def fetch_content
-      mail.parts.present? ? mail.parts[0].body.decoded : mail.decoded
+      mail.parts[0]&.body&.decoded || mail.body.decoded
     end
   end
 end

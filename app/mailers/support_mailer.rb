@@ -3,7 +3,7 @@ class SupportMailer < ApplicationMailer
 
   def auto_reply
     @user = params[:user]
-    @faqs = Faqs.all
+    @faqs = Faq.all
     mail(to: @user.email, subject: 'Auto Reply')
   end
 end

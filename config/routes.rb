@@ -1,6 +1,10 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users
   root 'conversations#index'
+
+  mount Sidekiq::Web => '/sidekiq'
 
   resources :users, only: [:index]
   resources :personal_messages, only: [:new, :create, :show]

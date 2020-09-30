@@ -8,7 +8,8 @@ class DevCenterMailer < ApplicationMailer
   end
 
   def admin_notification
-    @mail = params[:user_mail]
+    @title = params[:user_mail][:subject]
+    @message = params[:user_mail][:text]
     @user = params[:user]
     mail(subject: 'User needs help')
   end
