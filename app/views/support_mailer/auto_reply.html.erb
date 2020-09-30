@@ -1,0 +1,13 @@
+<h1>Thank you for your reply, <%= @user.name %></h1>
+<p>
+  If you did not find the answer for your question in the list below, resend the email to <b>devcenter@chatter.org.<b><br>
+</p>
+<h2>List of the Most Asked Questions: </h2>
+<p>
+  <% @faqs.each do |question| %>
+    <dl>
+      <dt><%= question.title %></dt>
+      <dd><%= question.descr %></dd>
+    </dl>
+  <% end %>
+</p>
